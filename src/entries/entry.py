@@ -147,7 +147,7 @@ def generate_cluster_members(
                 size_of_set[1], 
                 distance_threshold)
 
-            if jaccard.jaccard_seq(representatives[i], member) < distance_threshold:
+            if jaccard.jaccard_seq(list(representatives[i]), list(member)) < distance_threshold:
                 np.random.shuffle(member)
                 data.append(member)
                 ground_truths.append(i)
