@@ -9,7 +9,7 @@ parameters:
 * representatives : list of numpy array (cluster representative / medoids)
 """
 
-from distances import jaccard, pairwise
+from distances import jaccard_cy as jaccard, pairwise
 import numpy as np
 
 def _find_closest_member_from_other_clusters(own_cluster_id, pw_dist, ground_truths, data_id):

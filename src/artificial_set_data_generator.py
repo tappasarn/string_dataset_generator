@@ -18,7 +18,7 @@ type : tuple
 * list of numpy array (cluster representative / medoids)
 """
 from entries import entry
-from distances import jaccard, pairwise, overlap
+from distances import overlap
 
 def generate(
     data_size, 
