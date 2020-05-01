@@ -5,7 +5,7 @@ This module should be treated as a client of the library
 
 import artificial_set_data_generator as dg
 from features import feature
-from data import data_utilities
+from data import data_utilities, data_converter
 from imbalance import size
 import numpy as np
 
@@ -16,12 +16,19 @@ SIZE_OF_CLUSTERS = [] #size.random_cluster_sizes(DATA_SIZE, NUMBER_OF_CLUSTER)
 DIMENSION = 200
 DISTANCE_THRESHOLD = 0.85
 SIZE_OF_SET = (4,20)
-ALL_FEATURE_FILE_PATH = '../data/50000.txt'
+ALL_FEATURE_FILE_PATH = '../data/50000_range.txt'
 GT_REPRESENTATIVE_FILE_PATH = '../data/1000N_6K_gt_representative.txt'
+CONVERT_TO_GENERIC_NAME = True
+
+if CONVERT_TO_GENERIC_NAME:
+    data_converter.map_original_to_generic_name(ALL_FEATURE_FILE_PATH)
 
 # Read ground truth representative
 if GT_REPRESENTATIVE_FILE_PATH != '': 
     gt_representative = data_utilities.read_file(GT_REPRESENTATIVE_FILE_PATH)
+
+    if CONVERT_TO_GENERIC_NAME:
+        gt_representative = data_converter.convert_sequence(gt_representative, '../data/generic_data.txt', '../data/lookup_data.txt')
 else:
     gt_representative = []
 
